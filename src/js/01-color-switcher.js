@@ -4,6 +4,8 @@ const refs = {
     bodyEl: document.querySelector('body')
 };
 
+let timeoutId = null;
+
 refs.startBtn.addEventListener('click', onStart);
 refs.stopBtn.addEventListener('click', onStop);
 
@@ -15,13 +17,13 @@ refs.stopBtn.disabled = true;
 function onStart() {
     refs.startBtn.disabled = true;
     refs.stopBtn.disabled = false;
-    timerId = setInterval(() => {
+    timeoutId = setInterval(() => {
         refs.bodyEl.style.backgroundColor = getRandomHexColor();
     }, 1000); 
 };
 
 function onStop() {
-    clearInterval(timerId);
+    clearInterval(timeoutId);
     refs.startBtn.disabled = false;
     refs.stopBtn.disabled = true;
 };
